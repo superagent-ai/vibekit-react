@@ -1,6 +1,6 @@
 {
     "name": "@vibe-kit/onboard",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "main": "dist/index.cjs",
     "module": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -13,7 +13,8 @@
             "import": "./dist/index.js",
             "require": "./dist/index.cjs"
         },
-        "./style.css": "./dist/style.css"
+        "./style.css": "./dist/style.css",
+        "./script": "./dist/script-tag.umd.js"
     },
     "peerDependencies": {
         "react": ">=18",
@@ -43,6 +44,7 @@
         "@testing-library/user-event": "^14.6.1",
         "@types/node": "^24.0.3",
         "@types/react": "^19.1.8",
+        "@types/react-dom": "^19.1.6",
         "@vitejs/plugin-react": "^4.5.2",
         "autoprefixer": "^10.4.0",
         "jsdom": "^26.1.0",
@@ -57,6 +59,8 @@
     },
     "scripts": {
         "build:css": "postcss ./src/style.css -o ./dist/style.css --env production",
-        "build": "tsup && npm run build:css"
+        "build": "tsup && npm run build:css",
+        "build:umd": "tsup --config tsup.config.js && npm run build:css",
+        "serve": "python3 -m http.server 8000"
     }
 }

@@ -25,6 +25,8 @@ A React component library for seamless integration of VibeKit Onboard into your 
 
 ## Installation
 
+### Package Manager
+
 ```bash
 npm install @vibe-kit/onboard
 # or
@@ -32,6 +34,45 @@ yarn add @vibe-kit/onboard
 # or
 pnpm add @vibe-kit/onboard
 ```
+
+### Script Tags (CDN)
+
+For quick prototyping or if you prefer not to use a build system, you can include VibeKit directly via script tags with a simple data-attribute approach:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeKit Example</title>
+    
+    <!-- Include VibeKit CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/@vibe-kit/onboard/style.css">
+</head>
+<body>
+    <div class="min-h-screen p-8">
+        <div class="flex flex-col items-center justify-center gap-8">
+            <h1 class="text-3xl font-bold">Welcome to My App</h1>
+            <div id="vibekit-button"></div>
+        </div>
+    </div>
+    
+    <!-- Include VibeKit Script Tag Bundle -->
+    <script 
+        src="https://unpkg.com/@vibe-kit/onboard/dist/script-tag.umd.js"
+        data-agent-id="your-agent-token"
+        data-element="#vibekit-button">
+    </script>
+</body>
+</html>
+```
+
+**Data Attributes:**
+- `data-agent-id` - Your agent token for authentication
+- `data-element` - CSS selector for the element where the button should be rendered
+
+This approach automatically initializes the VibeKit button without requiring React setup or manual component instantiation.
 
 ## Quick Start
 

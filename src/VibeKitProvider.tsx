@@ -59,8 +59,8 @@ export const VibeKitProvider = ({
         setError(null);
 
         const response = await fetch(
-          `http://localhost:3000/api/embed?agentId=${token}`
-          //`https://app.vibekit.sh/api/embed?agentId=${token}`
+          //`http://localhost:3000/api/embed?agentId=${token}`
+          `https://app.vibekit.sh/api/embed?agentId=${token}`
         );
 
         if (!response.ok) {
