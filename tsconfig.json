@@ -1,36 +1,26 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
-
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-
-    /* Library specific */
-    "declaration": true,
-    "declarationMap": true,
-    "outDir": "dist",
-    
-    /* Path Alias */
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  },
-  "include": ["src", "__tests__", "setup.ts", "test"],
-  "references": [{ "path": "./tsconfig.node.json" }]
-}
+    "compilerOptions": {
+      "target": "ESNext",
+      "module": "ESNext",
+      "lib": ["DOM", "ESNext"],
+      "jsx": "react-jsx",
+      "declaration": true,
+      "declarationMap": true,
+      "sourceMap": true,
+      "outDir": "dist",
+      "moduleResolution": "node",
+      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": true,
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "skipLibCheck": true,
+      "strict": true,
+      "noEmit": false,
+      "baseUrl": ".",
+      "paths": {
+        "@/*": ["src/*"]
+      }
+    },
+    "include": ["src"],
+    "exclude": ["dist", "node_modules"]
+  }

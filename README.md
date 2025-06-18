@@ -1,96 +1,215 @@
-# @vibe-kit/react
+<div align="center">
 
-A comprehensive React component library providing modern, accessible, and customizable UI components with one-click integration capabilities.
+<img width="500px" src="./assets/vibekit-hero.png" />
+
+### The VibeKit Onboard React Component Library
+
+A React component library for seamless integration of VibeKit Onboard into your application.
+
+---
+
+[Website](https://vibekit.sh) • [Docs](https://docs.vibekit.sh) • [Discord](https://discord.com/invite/mhmJUTjW4b)
+
+---
+</div>
+
+
+## Features
+
+- 🚀 **Easy Integration** - Simple React components for quick setup
+- 🎨 **Customizable UI** - Branded buttons and dialogs with your colors and logos
+- 🔗 **GitHub Integration** - Connect repositories and create pull requests
+- 📱 **Responsive Design** - Works seamlessly across all device sizes
+- 🔐 **Authentication** - Secure GitHub OAuth integration
+- ⚡ **TypeScript Support** - Full TypeScript support with type definitions
 
 ## Installation
 
 ```bash
-npm install @vibe-kit/react
+npm install @vibe-kit/onboard
+# or
+yarn add @vibe-kit/onboard
+# or
+pnpm add @vibe-kit/onboard
 ```
+
+## Quick Start
+
+### 1. Import the Components
+
+```tsx
+import { VibeKitProvider, VibeKitButton } from "@vibe-kit/onboard";
+import "@vibe-kit/onboard/style.css";
+```
+
+### 2. Wrap Your App with the Provider
+
+```tsx
+function App() {
+  return (
+    <VibeKitProvider token="your-agent-token">
+      <YourAppContent />
+    </VibeKitProvider>
+  );
+}
+```
+
+### 3. Add the Button Component
+
+```tsx
+function YourAppContent() {
+  return (
+    <div>
+      <h1>Welcome to My App</h1>
+      <VibeKitButton />
+    </div>
+  );
+}
+```
+
+## Usage
+
+### Basic Implementation
+
+```tsx
+"use client";
+import { VibeKitProvider, VibeKitButton } from "@vibe-kit/onboard";
+import "@vibe-kit/onboard/style.css";
+
+export default function Home() {
+  return (
+    <div className="min-h-screen p-8">
+      <VibeKitProvider token="your-agent-token">
+        <div className="flex flex-col items-center justify-center gap-8">
+          <h1 className="text-3xl font-bold">Welcome to My App</h1>
+          <VibeKitButton />
+        </div>
+      </VibeKitProvider>
+    </div>
+  );
+}
+```
+
+### Advanced Configuration
+
+The VibeKit components automatically adapt to your agent's configuration, including:
+
+- **Custom Colors** - Uses your agent's primary color for the button
+- **Branded Logos** - Displays your agent or project logo
+- **Custom Text** - Shows your agent's custom button text and descriptions
+- **GitHub Integration** - Handles repository selection and pull request creation
 
 ## Components
 
+### VibeKitProvider
+
+The main provider component that manages the VibeKit context and agent data.
+
+**Props:**
+- `token` (string, required) - Your agent token for authentication
+- `children` (ReactNode, required) - Your app content
+
 ### VibeKitButton
 
-The `VibeKitButton` component provides a comprehensive integration wizard that allows users to:
-- Connect their GitHub account
-- Select repositories
-- Generate pull requests automatically
-- Copy integration prompts for AI assistants like Cursor, Windsurf, and Devin
+The main button component that opens the onboarding dialog.
 
-#### Basic Usage
+**Features:**
+- Automatically styled with your agent's colors
+- Shows your agent's logo (if configured)
+- Opens a modal dialog with integration options
+- Handles GitHub authentication
+- Manages repository selection and integration
+
+## API Reference
+
+### VibeKitProvider Context
+
+The provider exposes the following context values:
 
 ```tsx
-import { VibeKitButton } from "@vibe-kit/react";
+interface VibeKitContextProps {
+  token: string;
+  agent: Agent | null;
+  project: Project | null;
+  loading: boolean;
+  error: string | null;
+  githubToken: string | null;
+  isAuthenticated: boolean;
+  isLoading: boolean;
+  repositories: GitHubRepository[];
+  login: (agentId: string) => Promise<void>;
+  githubError: string | null;
+}
+```
 
-export default function App() {
+### useVibeKit Hook
+
+Access the VibeKit context in your components:
+
+```tsx
+import { useVibeKit } from "@vibe-kit/onboard";
+
+function MyComponent() {
+  const { agent, project, loading, error } = useVibeKit();
+  
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+  
   return (
-    <VibeKitButton>
-      <button className="px-4 py-2 bg-blue-600 text-white rounded">
-        Add VibeKit to my app
-      </button>
-    </VibeKitButton>
+    <div>
+      <h2>{agent?.name}</h2>
+      <p>{project?.description}</p>
+    </div>
   );
 }
 ```
 
-#### Stripe Integration
+## Styling
 
-```tsx
-import { VibeKitButton } from "@vibe-kit/react";
+VibeKit Onboard uses Tailwind CSS for styling. The components are fully customizable and will automatically adapt to your agent's branding:
 
-export default function App() {
-  return (
-    <VibeKitButton app="stripe">
-      <button className="px-4 py-2 bg-purple-600 text-white rounded">
-        Add Stripe Portal
-      </button>
-    </VibeKitButton>
-  );
-}
-```
+- **Primary Colors** - Applied to buttons and interactive elements
+- **Logos** - Displayed in buttons and dialogs
+- **Typography** - Uses your agent's custom text
+- **Dark Mode** - Automatically supports dark mode themes
 
-#### Props
+## Requirements
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `children` | `React.ReactNode` | - | The trigger element (required) |
-| `app` | `"default" \| "stripe"` | `"default"` | The type of integration |
-| `className` | `string` | - | Additional CSS classes |
-
-### Features
-
-- **GitHub Integration**: Seamlessly connect with GitHub repositories
-- **Pull Request Generation**: Automatically create PRs with integration code
-- **AI Assistant Support**: Generate prompts for Cursor, Windsurf, Devin, and other AI tools
-- **Dual Integration Modes**: Support for both VibeKit and Stripe Portal integrations
-- **TypeScript Support**: Full TypeScript support with proper type definitions
-- **Accessible**: Built with accessibility in mind using Radix UI primitives
-
-### Additional Components
-
-- `Button`: Basic button component
-- `VibeKitBaseButton`: Branded version of the basic button
-
-### Hooks
-
-- `useGitHubAuth`: GitHub authentication hook
-
-### Utilities
-
-- `cn`: Utility for merging class names
-- `generateVibeKitPrompt`: Generate integration prompts for VibeKit
-- `generateVibeKitPromptForStripe`: Generate integration prompts for Stripe Portal
+- React 18 or higher
+- React DOM 18 or higher
+- Tailwind CSS (for styling)
 
 ## Development
 
+### Building the Library
+
 ```bash
+# Install dependencies
 npm install
-npm run dev      # Start development server
-npm run build    # Build for production
-npm test         # Run tests
+
+# Build the library
+npm run build
+
+# Build CSS separately
+npm run build:css
 ```
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
 
 ## License
 
-MIT 
+This project is licensed under the MIT License.
+
+## Support
+
+For support and questions, please open an issue on GitHub or contact the VibeKit team.
+
+---
+
+Built with ❤️ by the VibeKit team

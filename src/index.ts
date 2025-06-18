@@ -1,4 +1,2 @@
-export * from "./components";
-export * from "./lib/utils";
-export * from "./lib/prompts";
-export * from "./hooks";
+export { VibeKitProvider } from "./VibeKitProvider";
+export { VibeKitButton } from "./VibeKitButton";
