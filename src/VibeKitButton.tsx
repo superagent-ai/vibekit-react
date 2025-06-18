@@ -220,7 +220,7 @@ export const VibeKitButton = () => {
                     className="flex flex-col gap-y-6"
                   >
                     {step === 1 && (
-                      <div className="space-y-6">
+                      <div className="space-y-6 flex flex-col gap-y-2">
                         <div className="flex flex-col gap-y-6">
                           <div>
                             <div className="text-left">
