@@ -11,6 +11,7 @@ export default defineConfig([
     clean: true,
     external: ["react", "react-dom"],
     publicDir: "src/assets",
+    injectStyle: true, // Automatically inject CSS into JS bundles
     esbuildOptions(options) {
       options.alias = {
         "@": path.resolve(process.cwd(), "src")

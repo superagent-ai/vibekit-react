@@ -1,6 +1,6 @@
 {
     "name": "@vibe-kit/onboard",
-    "version": "0.0.4",
+    "version": "0.0.4-rc.1",
     "main": "dist/index.cjs",
     "module": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -59,6 +59,7 @@
     },
     "scripts": {
         "build:css": "postcss ./src/style.css -o ./dist/style.css --env production",
+        "build:css:unminified": "postcss ./src/style.css -o ./dist/style.unminified.css --env development",
         "build": "tsup && npm run build:css",
         "build:umd": "tsup --config tsup.config.js && npm run build:css",
         "serve": "python3 -m http.server 8000"
