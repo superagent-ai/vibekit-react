@@ -48,7 +48,9 @@ const init = (config: VibeKitConfig) => {
 // Auto-initialize if config is found
 const autoInit = () => {
   // Look for data attributes on script tag
-  const scriptTag = document.querySelector('script[src*="vibekit"]');
+  const scriptTag = document.querySelector(
+    'script[src*="vibe-kit"], script[src*="vibekit"]'
+  );
   if (scriptTag) {
     const agentId = scriptTag.getAttribute("data-agent-id");
     const element = scriptTag.getAttribute("data-element") || "#vibekit-button";

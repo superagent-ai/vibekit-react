@@ -196,3 +196,4 @@ __tests__/coverage/
 *.orig
 .vite 
 example-app
+example.html
