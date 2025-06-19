@@ -24,31 +24,4 @@ export default defineConfig([
       };
     }
   },
-  // UMD build for script tag
-  {
-    entry: ["src/script-tag.tsx"],
-    format: ["iife"],
-    outDir: "dist",
-    outExtension: () => ({
-      js: '.umd.js'
-    }),
-    globalName: "VibeKit",
-    sourcemap: true,
-    minify: true,
-    platform: "browser",
-    external: [],
-    noExternal: ["react", "react-dom"],
-    injectStyle: true, // Inline CSS into the JS bundle
-    esbuildOptions(options) {
-      options.alias = {
-        "@": path.resolve(process.cwd(), "src")
-      };
-      options.loader = {
-        '.svg': 'dataurl',
-        '.png': 'dataurl',
-        '.jpg': 'dataurl',
-        '.jpeg': 'dataurl'
-      };
-    }
-  }
 ]); 

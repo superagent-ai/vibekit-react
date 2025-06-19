@@ -1,6 +1,6 @@
 {
     "name": "@vibe-kit/onboard",
-    "version": "0.0.4-rc.6",
+    "version": "0.0.5",
     "main": "dist/index.cjs",
     "module": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -12,56 +12,24 @@
         ".": {
             "import": "./dist/index.js",
             "require": "./dist/index.cjs"
-        },
-        "./style.css": "./dist/style.css",
-        "./script": "./dist/script-tag.umd.js"
+        }
     },
     "peerDependencies": {
         "react": ">=18",
         "react-dom": ">=18"
     },
-    "dependencies": {
-        "@hookform/resolvers": "^5.1.1",
-        "@radix-ui/react-dialog": "^1.0.0",
-        "@radix-ui/react-label": "^2.1.7",
-        "@radix-ui/react-scroll-area": "^1.2.9",
-        "@radix-ui/react-select": "^2.2.5",
-        "@radix-ui/react-tabs": "^1.1.12",
-        "class-variance-authority": "^0.7.1",
-        "clsx": "^2.1.1",
-        "geist": "^1.4.2",
-        "lucide-react": "^0.515.0",
-        "next-themes": "^0.4.6",
-        "react-hook-form": "^7.58.0",
-        "tailwind-merge": "^3.3.1",
-        "tailwind-variants": "^0.1.0",
-        "zod": "^3.25.67"
-    },
+    "dependencies": {},
     "devDependencies": {
-        "@tailwindcss/postcss": "^4.1.10",
-        "@testing-library/jest-dom": "^6.6.3",
-        "@testing-library/react": "^16.3.0",
-        "@testing-library/user-event": "^14.6.1",
         "@types/node": "^24.0.3",
         "@types/react": "^19.1.8",
         "@types/react-dom": "^19.1.6",
-        "@vitejs/plugin-react": "^4.5.2",
-        "autoprefixer": "^10.4.0",
-        "jsdom": "^26.1.0",
-        "postcss": "^8.4.0",
-        "postcss-cli": "^11.0.1",
-        "tailwindcss": "^4.0.0",
         "tsconfig-paths": "^4.2.0",
         "tsup": "^7.0.0",
-        "tw-animate-css": "^1.3.4",
-        "typescript": "^5.0.0",
-        "vitest": "^3.2.4"
+        "typescript": "^5.0.0"
     },
     "scripts": {
-        "build:css": "postcss ./src/style.css -o ./dist/style.css --env production",
-        "build:css:unminified": "postcss ./src/style.css -o ./dist/style.unminified.css --env development",
-        "build": "tsup && npm run build:css",
-        "build:umd": "tsup --config tsup.config.js && npm run build:css",
+        "build": "tsup",
+        "build:umd": "tsup --config tsup.config.js",
         "serve": "python3 -m http.server 8000"
     }
 }
