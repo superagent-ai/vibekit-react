@@ -49,6 +49,30 @@ export const VibeKitButton: React.FC<VibeKitButtonProps> = ({
     ...style,
   };
 
+  // If children exist, render as a div wrapper instead of button
+  if (children) {
+    return (
+      <>
+        <div
+          id="vibekit-button"
+          data-vibekit-token={token}
+          onClick={handleClick}
+          className={className}
+          style={style}
+        >
+          {children}
+        </div>
+
+        <VibeKitModal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          url={url}
+          title="VibeKit - Add to your app"
+        />
+      </>
+    );
+  }
+
   return (
     <>
       <button
